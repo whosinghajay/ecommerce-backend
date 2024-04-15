@@ -138,7 +138,7 @@ exports.deleteProduct = (0, error_js_1.TryCatch)(async (req, res, next) => {
     (0, fs_1.rm)(product.photo, () => {
         console.log("Product Photo Deletd");
     });
-    await product_js_1.Product.deleteOne();
+    await product.deleteOne();
     (0, features_js_1.invalidateCache)({
         product: true,
         productId: String(product._id),
