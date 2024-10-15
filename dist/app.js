@@ -12,6 +12,7 @@ const dotenv_1 = require("dotenv");
 const morgan_1 = __importDefault(require("morgan"));
 const stripe_1 = __importDefault(require("stripe"));
 const cors_1 = __importDefault(require("cors"));
+require("./utils/serverAwake.js");
 //importing routes
 const user_js_1 = __importDefault(require("./routes/user.js"));
 const product_js_1 = __importDefault(require("./routes/product.js"));
@@ -28,6 +29,9 @@ const stripeKey = process.env.STRIPE_KEY || "";
 exports.stripe = new stripe_1.default(stripeKey);
 exports.myCache = new node_cache_1.default();
 const app = (0, express_1.default)();
+app.get("/api/test", (req, res) => {
+    res.send("Awaking Server");
+});
 app.use(express_1.default.json());
 app.use((0, morgan_1.default)("dev"));
 app.use((0, cors_1.default)());
