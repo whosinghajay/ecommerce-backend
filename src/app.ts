@@ -6,7 +6,7 @@ import { config } from "dotenv";
 import morgan from "morgan";
 import Stripe from "stripe";
 import cors from "cors";
-import "../src/utils/serverAwake.js"
+import "./utils/serverAwake.js";
 
 //importing routes
 import userRoutes from "./routes/user.js";
