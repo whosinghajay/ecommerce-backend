@@ -6,6 +6,7 @@ import { config } from "dotenv";
 import morgan from "morgan";
 import Stripe from "stripe";
 import cors from "cors";
+import "../src/utils/serverAwake.js"
 
 //importing routes
 import userRoutes from "./routes/user.js";
@@ -28,6 +29,10 @@ export const stripe = new Stripe(stripeKey);
 export const myCache = new NodeCache();
 
 const app = express();
+
+app.get("/api/test", (req, res) => {
+  res.send("Awaking Server");
+});
 
 app.use(express.json());
 app.use(morgan("dev"));
